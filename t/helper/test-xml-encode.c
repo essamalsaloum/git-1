@@ -26,7 +26,7 @@ int cmd__xml_encode(int argc, const char **argv)
 		if (tmp2) {
 			if ((ch & 0xc0) != 0x80) {
 				fputs(utf8_replace_character, stdout);
-				tmp2 = 0;
+				tmp2 = NULL;
 				cur--;
 				continue;
 			}
@@ -34,7 +34,7 @@ int cmd__xml_encode(int argc, const char **argv)
 			tmp2++;
 			if (--remaining == 0) {
 				fwrite(tmp, tmp2 - tmp, 1, stdout);
-				tmp2 = 0;
+				tmp2 = NULL;
 			}
 			continue;
 		}
